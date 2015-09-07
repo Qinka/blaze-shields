@@ -113,7 +113,7 @@ module Text.Blaze.Svg.Shields
           colorB = stringValue $ fromMaybe "#4c1" cB
       socialStyle ::(Show a,ToMarkup a,Show b,Num b,Floating b)=> (a,b)        --left
                                                      -> (a,b)        --right
-                                                     -> Maybe String --logo logowidth logopadding logo-url
+                                                     -> Maybe String --logo-url
                                                      -> Maybe String --link1
                                                      -> Maybe String --link2
                                                      -> Svg          -- rt

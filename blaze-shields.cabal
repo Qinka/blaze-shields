@@ -3,10 +3,11 @@ version: 0.1.0.0
 synopsis: create svg by Haskell
 description: a Haskell version of shields ,which is on github.
 homepage: http://githubcom/Qinka/blaze-shields
+bug-reports: https://github.com/Qinka/blaze-shields/issues
 license:  BSD3
 license-file: LICENSE
 author:	Qinka
-maintainers: qinka@live.com
+maintainer: qinka@live.com
 category: Web
 build-type: Simple
 cabal-version: >= 1.12
