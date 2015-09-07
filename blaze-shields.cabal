@@ -1,5 +1,5 @@
 name: blaze-shields
-version: 0.1.0.0
+version: 0.1.0.1
 synopsis: create svg by Haskell
 description: a Haskell version of shields ,which is on github.
 homepage: http://githubcom/Qinka/blaze-shields
