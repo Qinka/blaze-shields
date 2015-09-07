@@ -18,6 +18,5 @@ Prelude Text.Blaze.Svg.Shields Text.Blaze.Svg.Renderer.String>  writeFile "a.svg
 
 ## 效果
 使用浏览器打开 a.svg
-![a.svg](./readme.rc/a.svg)
 
 Try to do what shields do with Haskell
