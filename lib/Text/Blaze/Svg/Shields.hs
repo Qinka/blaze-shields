@@ -12,14 +12,13 @@ module Text.Blaze.Svg.Shields
     ) where
 
       import Prelude hiding (id,show)
-      import Control.Monad(when)
       import Data.Maybe(fromMaybe)
 
       import Text.Blaze(ToMarkup,AttributeValue)
-      import Text.Blaze.Internal(string,stringValue,attribute,AttributeValue,Attribute)
+      import Text.Blaze.Internal(stringValue,attribute,Attribute)
       import Text.Blaze.Html((!),toHtml)
       import Text.Blaze.Html5(style)
-      import Text.Blaze.Html5.Attributes(xmlns,href)
+      import Text.Blaze.Html5.Attributes(xmlns)
       import Text.Blaze.Svg(Svg)
       import Text.Blaze.Svg11(
         svg,lineargradient,stop,rect,g,path,text_,rect,
@@ -32,18 +31,15 @@ module Text.Blaze.Svg.Shields
         )
       import qualified Text.Blaze.Svg11 as S11
       import qualified Text.Blaze.Svg11.Attributes as S11A
-      import qualified Text.Blaze.Html5.Attributes as H5A
       import qualified Prelude as P
 
       show :: Show a => a -> AttributeValue
-      show x = stringValue  show_
-        where
-          show_ = P.show x
+      show = stringValue . P.show
       xmlnsXlink :: AttributeValue  -- ^ Attribute value.
-            -> Attribute       -- ^ Resulting attribute.
+                 -> Attribute       -- ^ Resulting attribute.
       xmlnsXlink = attribute "xmlns:xlink" " xmlns:xlink=\""
 
-      plasticStyle ::(Show a,ToMarkup a,Show b,Num b,Floating b)=> (a,b)        --left
+      plasticStyle ::(Show a,ToMarkup a,Show b,Floating b)=> (a,b)        --left
                                                       -> (a,b)        --right
                                                       -> Maybe String --colorA
                                                       -> Maybe String --colorB
@@ -69,7 +65,7 @@ module Text.Blaze.Svg.Shields
           colorA = stringValue $ fromMaybe "#555" cA
           colorB = stringValue $ fromMaybe "#4c1" cB
 
-      flatStyle ::(Show a,ToMarkup a,Show b,Num b,Floating b)=> (a,b)        --left
+      flatStyle ::(Show a,ToMarkup a,Show b,Floating b)=> (a,b)        --left
                                                    -> (a,b)        --right
                                                    -> Maybe String --colorA
                                                    -> Maybe String --colorB
@@ -95,7 +91,7 @@ module Text.Blaze.Svg.Shields
 
 
 
-      flatSquareStyle ::(Show a,ToMarkup a,Show b,Num b,Floating b)=> (a,b)        --left
+      flatSquareStyle ::(Show a,ToMarkup a,Show b,Floating b)=> (a,b)        --left
                                                         -> (a,b)        --right
                                                         -> Maybe String --colorA
                                                         -> Maybe String --colorB
@@ -111,18 +107,14 @@ module Text.Blaze.Svg.Shields
         where
           colorA = stringValue $ fromMaybe "#555" cA
           colorB = stringValue $ fromMaybe "#4c1" cB
-      socialStyle ::(Show a,ToMarkup a,Show b,Num b,Floating b)=> (a,b)        --left
+      socialStyle ::(Show a,ToMarkup a,Show b,Floating b)=> (a,b)        --left
                                                      -> (a,b)        --right
                                                      -> Maybe String --logo-url
                                                      -> Maybe String --link1
                                                      -> Maybe String --link2
                                                      -> Svg          -- rt
       socialStyle (l,lp) (r,rp) logo la lb= svg ! xmlns "http://www.w3.org/2000/svg" ! xmlnsXlink "http://www.w3.org/1999/xlink"! width (show $ lp+ww+pp+rp+21) ! height "20" $ do
-          style ! type_ "text/css" $ do
-            "<![CDATA[\n"
-            "    #llink:hover { fill:url(#b); stroke:#ccc; }\n"
-            "    #rlink:hover { fill:#4183C4; }\n"
-            "  ]]>"
+          style ! type_ "text/css" $ "<![CDATA[\n    #llink:hover { fill:url(#b); stroke:#ccc; }\n    #rlink:hover { fill:#4183C4; }\n  ]]>"
           lineargradient ! id_ "a" ! x2 "0" ! y2 "100%" $ do
             stop ! offset "0" ! stopColor "#fcfcfc" ! stopOpacity "0"
             stop ! offset "1" ! stopOpacity ".1"
