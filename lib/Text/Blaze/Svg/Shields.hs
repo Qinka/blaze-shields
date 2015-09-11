@@ -35,6 +35,9 @@ module Text.Blaze.Svg.Shields
 
       show :: Show a => a -> AttributeValue
       show = stringValue . P.show
+
+
+
       xmlnsXlink :: AttributeValue  -- ^ Attribute value.
                  -> Attribute       -- ^ Resulting attribute.
       xmlnsXlink = attribute "xmlns:xlink" " xmlns:xlink=\""
