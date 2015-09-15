@@ -65,8 +65,8 @@ module Text.Blaze.Svg.Shields
             text_ ! x (show $ lp+rp/2+13) ! y "14" ! fill "#010101" ! fillOpacity "0.3" $ toHtml r
             text_ ! x (show $ lp+rp/2+13) ! y "13" $ toHtml r
         where
-          colorA = stringValue $ fromMaybe "#555" cA
-          colorB = stringValue $ fromMaybe "#4c1" cB
+          colorA = stringValue $ ('#':) $ fromMaybe "555" cA
+          colorB = stringValue $ ('#':) $ fromMaybe "#4c1" cB
 
       flatStyle ::(Show a,ToMarkup a,Show b,Floating b)=> (a,b)        --left
                                                    -> (a,b)        --right
@@ -89,8 +89,8 @@ module Text.Blaze.Svg.Shields
             text_ ! x (show $ lp +rp/2+13) ! y "14"  ! fill "#010101" ! fillOpacity ".3" $ toHtml r
             text_ ! x (show $ lp +rp/2+13) ! y "14"  $ toHtml r
         where
-          colorA = stringValue $ fromMaybe "#555" cA
-          colorB = stringValue $ fromMaybe "#4c1" cB
+          colorA = stringValue $ ('#':) $ fromMaybe "555" cA
+          colorB = stringValue $ ('#':) $ fromMaybe "#4c1" cB
 
 
 
@@ -108,8 +108,8 @@ module Text.Blaze.Svg.Shields
           text_ ! x (show $ lp/2+7) !y "14" $ toHtml l
           text_ ! x (show $ lp+rp/2+13) !y "14" $ toHtml r
         where
-          colorA = stringValue $ fromMaybe "#555" cA
-          colorB = stringValue $ fromMaybe "#4c1" cB
+          colorA = stringValue $ ('#':) $ fromMaybe "555" cA
+          colorB = stringValue $ ('#':) $ fromMaybe "#4c1" cB
       socialStyle ::(Show a,ToMarkup a,Show b,Floating b)=> (a,b)        --left
                                                      -> (a,b)        --right
                                                      -> Maybe String --logo-url
